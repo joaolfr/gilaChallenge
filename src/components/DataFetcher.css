@@ -1,0 +1,14 @@
+.theme-dark{
+    background-color: black;
+    color: white;
+}
+.theme-light{
+    background-color: white;
+    color: black;
+}
+
+.header{
+    position: sticky;
+    top: 0;
+    
+}
