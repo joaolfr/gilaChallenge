@@ -1,3 +1,9 @@
+body{
+    margin: 0;
+}
+.container{
+    padding:10px;
+}
 .theme-dark{
     background-color: black;
     color: white;
@@ -10,5 +16,8 @@
 .header{
     position: sticky;
     top: 0;
-    
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
 }

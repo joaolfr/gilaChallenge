@@ -1,5 +1,5 @@
 import { api } from "../api/axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./DataFetcher.css"
 import { ThemeContext } from "../context/ThemeContext";
 import { useContext } from "react";
@@ -13,10 +13,10 @@ interface User {
 
 export function DataFetcher() {
   const {mode, toggle} = useContext(ThemeContext)
-  const [fetchedData, setFechedData] = useState<User[]>([]);
+  const [fetchedData, setFechedData] = useState<User[]>([{id:0, userId:0, title:"empty", body:"empty"}]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  const loadData = useCallback(() => {
     setLoading(true)
     api.get<User[]>('/')
     .then(res => {
@@ -25,20 +25,28 @@ export function DataFetcher() {
     })
   }, [])
 
-  return (
-    <div className={`theme-${mode}`}>
-      <label>
+  useEffect(() => {
+   loadData()
+  }, [])
+
+  const Loading = () => {
+    return(
+      <p>Loading...</p>
+    )
+  }
+
+  const UserCards = () => {
+    return (
+      <div className={`container theme-${mode}`}>
+      <div className="header">
         <input
           type="checkbox"
           checked={mode === 'dark'}
           onChange={toggle}
         />
         Dark mode
-      </label>
-      {loading? <p>loading</p> : <p>Gila Software</p>}
-      {fetchedData.length > 0 && fetchedData.map(item => {
-
-       return( 
+      </div>
+      { fetchedData.map(item => (
         <div key={item.id}>
           <p>ID: {item.id}</p>
           <p>User ID: {item.userId}</p>
@@ -46,8 +54,13 @@ export function DataFetcher() {
           <p>Body: {item.body}</p>
           <br />
         </div>
-      )}
+      )
        )}
     </div>
-  )
+    )
+  }
+
+  if(loading) return <Loading />
+
+  if(fetchedData.length > 0) return <UserCards />
 }
