@@ -28,7 +28,7 @@ export function DataFetcher() {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   const Loading = () => {
     return <p>Loading...</p>;
