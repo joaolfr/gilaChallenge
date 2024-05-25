@@ -10,7 +10,10 @@ interface ChildrenProps {
   children: React.ReactNode;
 }
 
-export const ThemeContext = createContext<ThemeContextType>({ mode: "light", toggle: () => {} });
+export const ThemeContext = createContext<ThemeContextType>({
+  mode: "light",
+  toggle: () => {},
+});
 
 export const ThemeProvider = ({ children }: ChildrenProps) => {
   const [mode, setMode] = useState<ModeType>("dark");
