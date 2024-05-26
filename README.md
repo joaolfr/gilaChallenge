@@ -13,4 +13,5 @@ I tried to focus on finishing this project most simply, as an alternative I crea
 ...To run locally 
 
 npm i
+
 npm run dev
