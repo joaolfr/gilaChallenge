@@ -3,6 +3,7 @@ Gila Challenge
 [Project Page](https://gila-challenge-9xikimast-joaolfrs-projects.vercel.app/)
 
 [Gila X Challenge repo](https://github.com/joaolfr/gilaXchallenge)
+
 [Gila X Challenge page](https://gila-xchallenge-nhgr.vercel.app/)
 
 For this project, I decided to go with Vite, because it's super fast, easy to set up, and makes the dev workflow faster with quick updates and builds. You'll spend less time waiting and more time coding.
